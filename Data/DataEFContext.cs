@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Rieltor.Data.Entities;
 
 namespace Rieltor.Data
 {
@@ -6,5 +7,7 @@ namespace Rieltor.Data
     {
         public DataEFContext(DbContextOptions<DataEFContext> options)
            : base(options) { }
+
+        public DbSet<CityEntity> Cities { get; set; }
     }
 }
