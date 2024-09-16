@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Rieltor.Data;
+
 namespace Rieltor
 {
     public class Program
@@ -8,6 +11,9 @@ namespace Rieltor
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<DataEFContext>(opt =>
+             opt.UseSqlServer(builder.Configuration.GetConnectionString("MSSQLConnection")));
 
             var app = builder.Build();
 
