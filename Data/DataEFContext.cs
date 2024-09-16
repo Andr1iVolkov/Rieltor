@@ -9,5 +9,6 @@ namespace Rieltor.Data
            : base(options) { }
 
         public DbSet<CityEntity> Cities { get; set; }
+        public DbSet<RieltorEntity> Rieltors { get; set; }
     }
 }
