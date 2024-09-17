@@ -11,5 +11,10 @@ namespace Rieltor.Data
         public DbSet<CityEntity> Cities { get; set; }
         public DbSet<RieltorEntity> Rieltors { get; set; }
         public DbSet<TypesOfObjectsEntity> TypesOfObjects { get; set; }
+        public DbSet<ObjectEntity> Objects { get; set; }
+
+        public DbSet<PhotoObjectEntity> PhotoObjectEntities { get; set; }
+
+
     }
 }

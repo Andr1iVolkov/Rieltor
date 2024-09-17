@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Rieltor.Data;
 
@@ -10,9 +11,11 @@ using Rieltor.Data;
 namespace Rieltor.Migrations
 {
     [DbContext(typeof(DataEFContext))]
-    partial class DataEFContextModelSnapshot : ModelSnapshot
+    [Migration("20240917092622_Add tblObjests")]
+    partial class AddtblObjests
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,29 +87,6 @@ namespace Rieltor.Migrations
                     b.HasIndex("TypeOfObjectId");
 
                     b.ToTable("tblObjects");
-                });
-
-            modelBuilder.Entity("Rieltor.Data.Entities.PhotoObjectEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Image")
-                        .IsRequired()
-                        .HasMaxLength(5000)
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ObjectId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ObjectId");
-
-                    b.ToTable("tblPhotosObjects");
                 });
 
             modelBuilder.Entity("Rieltor.Data.Entities.RieltorEntity", b =>
@@ -205,17 +185,6 @@ namespace Rieltor.Migrations
                     b.Navigation("Rieltor");
 
                     b.Navigation("TypeOfObject");
-                });
-
-            modelBuilder.Entity("Rieltor.Data.Entities.PhotoObjectEntity", b =>
-                {
-                    b.HasOne("Rieltor.Data.Entities.ObjectEntity", "Object")
-                        .WithMany()
-                        .HasForeignKey("ObjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Object");
                 });
 #pragma warning restore 612, 618
         }
