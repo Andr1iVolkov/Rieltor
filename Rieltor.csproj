@@ -19,4 +19,17 @@
 		<PackageReference Include="SixLabors.ImageSharp" Version="3.1.5" />
 	</ItemGroup>
 
+
+	<ItemGroup>
+	  <Folder Include="Views\Object\" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <None Include="wwwroot\Image\EmailPhoto.png" />
+	  <None Include="wwwroot\Image\Instagram.png" />
+	  <None Include="wwwroot\Image\PhonePhoto.png" />
+	  <None Include="wwwroot\Image\Telegram.png" />
+	</ItemGroup>
+
 </Project>

@@ -1,0 +1,59 @@
+﻿@using Rieltor.Models.Rieltor
+
+@model RieltorViewModel
+
+
+<div class="rieltor-main-div">
+
+    <div class="rieltor-background-block">
+    </div>
+
+    <div>
+        <div>
+            <img class="rieltor-photo" src="@Model.Image" alt="foto">
+        </div>
+        <div>
+            <h1 class="rieltor-name">@Model.FirstName @Model.LastName</h1>
+            <h2 class="rieltor-position">Експерт з нерухомості</h2>
+            <h1 class="rieltor-company">Ріелторська Компанія "Золоті Ворота"</h1>
+
+            <div class="rieltor-about">
+                <p class="rieltor-about-p">
+                   @Model.AboutYourself
+                </p>
+            </div>
+
+            <div class="rieltor-main-div-contacts">
+                <div class="rieltor-div-contacts">
+                    <div>
+                        <img class="rieltor-contact-img" src="/Image/PhonePhoto.png" alt="phone">
+                    </div>
+                    <div class="rieltor-div-contact-value">
+                        <p>@Model.PhoneNumber</p>
+                    </div>
+                </div>
+                <div class="rieltor-div-contacts">
+                    <div>
+                        <img class="rieltor-contact-img" src="/Image/EmailPhoto.png" alt="email">
+                    </div>
+                    <div class="rieltor-div-contact-value">
+                        <p>@Model.Email</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rieltor-messenger-div">
+                <div>
+                    <a href="@Model.Telegram" target="_blank">
+                        <img class="rieltor-messenger-icon" src="/Image/Telegram.png" alt="telegram">
+                    </a>
+                </div>
+                <div>
+                    <a href="@Model.Instagram" target="_blank">
+                        <img class="rieltor-messenger-icon" src="/Image/Instagram.png" alt="Instagram">
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
