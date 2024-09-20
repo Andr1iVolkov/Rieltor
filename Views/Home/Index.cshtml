@@ -7,22 +7,106 @@
 
 
 
-<div class="row">
-	@foreach (var item in Model.Rieltors)
-	{
-		<div class="col-md-3">
-			<div class="card">
-				<a href="@Url.Action("Show", "Rieltor", new { id = item.Id })">
-				<h3 class="card-title"> @item.FirstName </h3>
-				<img src="@item.Image"
-					 class="card-img-top" />
+<div class="div-page">
+    <div class="main-container">
+        <div class="upper-header-background">
+            <div class="upper-header-div">
+                <div>
+                    <p>
+                        Ми працюємо для Вас!
+                    </p>
+                </div>
+
+                <div class="upper-header-search-div">
+                    <div class="upper-header-search">
+                        <p>Пошук нерухомості</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-contacts-container">
+            <div class="header-contacts-div">
+
+                <div>
+                    <img src="/Image/logo.svg" alt="logo">
+                </div>
+
+                <div>
+                    <div class="header-right-contacts-div">
+                        <div class="location-point-div">
+                            <div class="location-point-div-img">
+                                <img class="location-point-img" src="/Image/locationPoint.png" alt="point">
+                            </div>
+                            <p>
+                                ст. м. "Палац Спорту" <br>
+                                вул. Шота Руставелі, 20<br>
+                                офіс 6
+                            </p>
+                        </div>
+                        <div class="location-point-div">
+                            <div class="location-point-div-img">
+                                <img class="location-point-img" src="/Image/locationPoint.png" alt="point">
+                            </div>
+                            <p>
+                                ст. м. "Золоті Ворота"<br>
+                                вул. Б. Хмельницького, 29/2<br>
+                                офіс 4
+                            </p>
+                        </div>
+                        <div class="location-point-div">
+                            <div class="location-point-div-img">
+                                <img class="location-point-img" src="/Image/yellowphone.png" alt="phone">
+                            </div>
+                            <p>
+                                Наші телефони:<br>
+                                +38 (067) 829 41 00<br>
+                                +38 (044) 390 34 93
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
 
+            </div>
+        </div>
 
-			</div>
-		</div>
-	}
+    </div>
+
+
+    <section>
+        <div class="div-section-rieltor-card">
+            <div>
+                <h1>Наші кращі рієлтори</h1>
+            </div>
+
+            <div class="div-container-rieltor-card">
+                <ul class="container-rieltor-card">
+                    @foreach (var item in Model.Rieltors)
+                    {
+                        <li>
+                            <a href="@Url.Action("Show", "Rieltor", new { id = item.Id })">
+                                <div class="rieltor-card">
+                                    <img src="@item.Image" alt="">
+                                    <div class="rieltor-info-div">
+                                        <h2>@item.LastName</h2>
+                                        <h2>@item.FirstName</h2>
+                                        <div>
+                                            <p>
+                                                @item.AboutYourself
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
 </div>
-
-
-
+   
