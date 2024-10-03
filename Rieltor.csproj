@@ -21,11 +21,6 @@
 
 
 	<ItemGroup>
-	  <Folder Include="Views\Object\" />
-	</ItemGroup>
-
-
-	<ItemGroup>
 	  <None Include="wwwroot\Image\EmailPhoto.png" />
 	  <None Include="wwwroot\Image\Instagram.png" />
 	  <None Include="wwwroot\Image\PhonePhoto.png" />

@@ -1,0 +1,159 @@
+﻿@using Rieltor.Models.Object
+@model Rieltor.Models.Object.ObjectSearchModel
+
+<div class="main-div-search-object-page">
+
+    <div class="main-container">
+        <div class="upper-header-background">
+            <div class="upper-header-div">
+                <div>
+                    <p>
+                        Ми працюємо для Вас!
+                    </p>
+                </div>
+                <a href="@Url.Action("Show", "PickTypeOfObject")">
+                    <div class="upper-header-search-div">
+
+                        <div class="upper-header-search">
+                            <p>Пошук нерухомості</p>
+                        </div>
+
+                    </div>
+                </a>
+
+
+            </div>
+        </div>
+
+        <div class="header-contacts-container">
+            <div class="header-contacts-div">
+
+                <div>
+                    <img src="/Image/logo.svg" alt="logo">
+                </div>
+
+                <div>
+                    <div class="header-right-contacts-div">
+                        <div class="location-point-div">
+                            <div class="location-point-div-img">
+                                <img class="location-point-img" src="/Image/locationPoint.png" alt="point">
+                            </div>
+                            <p>
+                                ст. м. "Палац Спорту" <br>
+                                вул. Шота Руставелі, 20<br>
+                                офіс 6
+                            </p>
+                        </div>
+                        <div class="location-point-div">
+                            <div class="location-point-div-img">
+                                <img class="location-point-img" src="/Image/locationPoint.png" alt="point">
+                            </div>
+                            <p>
+                                ст. м. "Золоті Ворота"<br>
+                                вул. Б. Хмельницького, 29/2<br>
+                                офіс 4
+                            </p>
+                        </div>
+                        <div class="location-point-div">
+                            <div class="location-point-div-img">
+                                <img class="location-point-img" src="/Image/yellowphone.png" alt="phone">
+                            </div>
+                            <p>
+                                Наші телефони:<br>
+                                +38 (067) 829 41 00<br>
+                                +38 (044) 390 34 93
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="div-search-bloc">
+        <form asp-action="Create">
+            <div class="div-search-all-items div-seacrh-city">
+                <label for="City">Місто</label>
+                <select id="cityDropdown" asp-for="CityId" asp-items="ViewBag.Cities" data-val="@ViewBag.SelectedCity"></select>
+            </div>
+
+            <div class="div-search-all-items div-seacrh-district">
+                <label for="District">Район</label>
+                <select id="districtDropdown" asp-for="DistrictId">
+                    @foreach (var district in ViewBag.Districts)
+                    {
+                        <option value="@district.Value">@district.Text</option>
+                    }
+                </select>
+            </div>
+
+            <div class="div-search-all-items div-seacrh-city">
+                <label for="Rooms">Кількість кімнат</label>
+                <select asp-for="Rooms">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4+</option>
+                </select>
+            </div>
+
+            <div class="div-search-all-items div-seacrh-city">
+                <label for="Area">Площа (кв.м.)</label>
+                <input type="number" asp-for="Area" min="1" step="1" />
+            </div>
+
+            <div class="div-search-all-items div-seacrh-city">
+                <label for="Floor">Поверх</label>
+                <input type="number" asp-for="Floor" min="1" step="1" />
+            </div>
+
+            <div class="div-search-for-btn">
+                <button class="btn-search-button" type="submit">Знайти об'єкт</button>
+                <button class="btn-search-button-clear" type="submit">Очистити</button>
+            </div>
+            
+        </form>
+    </div>
+
+
+
+
+
+</div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var selectedCityId = $('#cityDropdown').data('val'); // Получаем Id города по умолчанию
+
+            // Сразу загружаем районы для города по умолчанию
+            if (selectedCityId) {
+                loadDistricts(selectedCityId);
+            }
+
+            $('#cityDropdown').change(function () {
+                var cityId = $(this).val();
+                loadDistricts(cityId);
+            });
+
+            function loadDistricts(cityId) {
+                $.getJSON('@Url.Action("GetDistrictsByCityId", "Object")', { cityId: cityId }, function (districts) {
+                    var districtDropdown = $('#districtDropdown');
+                    districtDropdown.empty(); // Очищаем текущие опции
+
+                    $.each(districts, function (index, district) {
+                        districtDropdown.append($('<option>', {
+                            value: district.id,
+                            text: district.name
+                        }));
+                    });
+                });
+            }
+        });
+    </script>
+}
+

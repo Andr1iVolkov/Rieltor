@@ -407,3 +407,142 @@ ul {
     font-weight: 400;
     color: #555;
 }
+
+
+.main-div-search-object-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.div-search-bloc {
+    width: 1140px;
+    height: 818px;
+    padding: 30px;
+    margin-top: 50px;
+    background-color: #EEEEEE;
+
+}
+
+
+.div-search-all-items {
+    display: flex;
+}
+
+.div-search-bloc {
+    width: 1140px;
+    height: 830px;
+    padding: 30px;
+    background-color: #EEEEEE;
+    border-radius: 6px;
+}
+
+.div-search-all-items {
+    display: flex;
+    flex-direction: column;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #555555;
+    margin-bottom: 10px;
+}
+
+.div-seacrh-city {
+    height: 82px;
+}
+
+.div-seacrh-city select {
+    height: 42px;
+    padding: 10px 16px;
+}
+   
+
+.div-seacrh-district {
+    height: 82px;
+}
+
+.div-seacrh-district select {
+    height: 42px;
+    padding: 6px 16px;
+}
+
+.div-seacrh-city input {
+    height: 42px;
+    padding: 0px 16px;
+}
+
+.btn-search-button {
+    background: none;
+    border: 2px solid #b7a66d;
+    border-radius: 30px;
+    color: #555;
+    padding: 10px 20px;
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    line-height: 1.3333333;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.btn-search-button-clear {
+    background: none;
+    border: 2px solid #777;
+    border-radius: 30px;
+    color: #555;
+    padding: 10px 20px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.div-search-for-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.main-div-pick-object {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-div-for-ul-pick-object {
+    border-radius: 15px;
+    width: 1340px;
+    background-color: #EEEEEE;
+}
+
+.pick-object-div {
+    width: 500px;
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+    .pick-object-div img {
+        width: 300px;
+        height: auto;
+        margin-bottom: 50px;
+    }
+
+.ul-pick-object {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.main-div-pick-object h1 {
+    font-family: 'El Messiri', sans-serif;
+    padding: 0;
+    border: none;
+}

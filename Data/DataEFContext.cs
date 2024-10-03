@@ -15,6 +15,7 @@ namespace Rieltor.Data
 
         public DbSet<PhotoObjectEntity> PhotoObjectEntities { get; set; }
 
+        public DbSet<DistrictEntity> DistrictEntities { get; set; }
 
     }
 }

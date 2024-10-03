@@ -1,13 +1,9 @@
-﻿@using Rieltor.Models.Rieltor
-@model HomePageViewModel
-
-@{
-    ViewData["Title"] = "Home Page";
-}
+﻿
 
 
 
 <div class="div-page">
+
     <div class="main-container">
         <div class="upper-header-background">
             <div class="upper-header-div">
@@ -26,7 +22,7 @@
                     </div>
                 </a>
 
-               
+
             </div>
         </div>
 
@@ -79,39 +75,56 @@
     </div>
 
 
-    <section>
-        <div class="div-section-rieltor-card">
-            <div>
-                <h1>Наші кращі рієлтори</h1>
-            </div>
 
-            <div class="div-container-rieltor-card">
-                <ul class="container-rieltor-card">
-                    @foreach (var item in Model.Rieltors)
-                    {
-                        <li>
-                            <a href="@Url.Action("Show", "Rieltor", new { id = item.Id })">
-                                <div class="rieltor-card">
-                                    <img src="@item.Image" alt="">
-                                    <div class="rieltor-info-div">
-                                        <h2>@item.LastName</h2>
-                                        <h2>@item.FirstName</h2>
-                                        <div>
-                                            <p>
-                                                @item.AboutYourself
-                                            </p>
-                                        </div>
-                                    </div>
 
-                                </div>
-                        </li>
-                    }
 
-                </ul>
-            </div>
 
+
+
+    <div class="main-div-pick-object">
+        <h1>Виберіть що шукаєте</h1>
+        <div class="main-div-for-ul-pick-object">
+            <ul class="ul-pick-object">
+                <li>
+                    <a href="@Url.Action("PickType", "Object", new { id = 1 })">
+                    <div class="pick-object-div">
+                        <h1>
+                            Квартири
+                        </h1>
+                        <img src="/Image/apartment.webp" alt="apartment">
+                    </div>
+                </li>
+                <li>
+                    <a href="@Url.Action("PickType", "Object", new { id = 2 })">
+                    <div class="pick-object-div">
+                        <h1>
+                            Будинки
+                        </h1>
+                        <img src="/Image/apartment.webp" alt="apartment">
+                    </div>
+                </li>
+                <li>
+                    <a href="@Url.Action("PickType", "Object", new { id = 3 })">
+                    <div class="pick-object-div">
+                        <h1>
+                            Земельні ділянки
+                        </h1>
+                        <img src="/Image/apartment.webp" alt="apartment">
+                    </div>
+                </li>
+                <li>
+                    <a href="@Url.Action("PickType", "Object", new { id = 4 })">
+                    <div class="pick-object-div">
+                        <h1>
+                            Офіси
+                        </h1>
+                        <img src="/Image/apartment.webp" alt="apartment">
+                    </div>
+                </li>
+            </ul>
         </div>
-    </section>
+
+    </div>
 
 </div>
-   
+

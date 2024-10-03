@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Rieltor.Data;
 
@@ -10,9 +11,11 @@ using Rieltor.Data;
 namespace Rieltor.Migrations
 {
     [DbContext(typeof(DataEFContext))]
-    partial class DataEFContextModelSnapshot : ModelSnapshot
+    [Migration("20240926203000_Add DistrictId")]
+    partial class AddDistrictId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,17 +50,12 @@ namespace Rieltor.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CityId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CityId");
 
                     b.ToTable("tblDistricts");
                 });
@@ -201,17 +199,6 @@ namespace Rieltor.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("tblTypesOfObjects");
-                });
-
-            modelBuilder.Entity("Rieltor.Data.Entities.DistrictEntity", b =>
-                {
-                    b.HasOne("Rieltor.Data.Entities.CityEntity", "City")
-                        .WithMany()
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("City");
                 });
 
             modelBuilder.Entity("Rieltor.Data.Entities.ObjectEntity", b =>

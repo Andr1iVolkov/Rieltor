@@ -17,8 +17,9 @@ namespace Rieltor.Data.Entities
         public int CityId { get; set; }
         public virtual CityEntity City { get; set; }
 
-        [Required, StringLength(100)]
-        public string District { get; set; }
+        [ForeignKey("District")]
+        public int DistrictId { get; set; }
+        public virtual DistrictEntity District { get; set; }
  
         [Required, StringLength(100)]
         public string Address { get; set; }
