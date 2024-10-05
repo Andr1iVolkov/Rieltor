@@ -17,8 +17,8 @@ namespace Rieltor.Controllers
 
         public IActionResult Search()
         {
-            
-
+            var cities = new SelectList(_dataEFContext.Cities.ToList(), "Id", "Name");
+            ViewBag.Cities = cities;
             return View();
         }
 

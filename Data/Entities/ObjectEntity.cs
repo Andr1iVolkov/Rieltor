@@ -33,6 +33,9 @@ namespace Rieltor.Data.Entities
         [Required]
         public int Floor { get; set; }
 
+        [Required]
+        public int Price { get; set; }
+
         [ForeignKey("Rieltor")]
         public int RieltorId { get; set; }
         public virtual RieltorEntity Rieltor { get; set; }

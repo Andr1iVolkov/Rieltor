@@ -79,27 +79,47 @@
         <form asp-action="Create">
             <div class="div-search-all-items div-seacrh-city">
                 <label for="City">Місто</label>
-                <select id="cityDropdown" asp-for="CityId" asp-items="ViewBag.Cities" data-val="@ViewBag.SelectedCity"></select>
+                <select id="cityDropdown" asp-for="CityId" asp-items="ViewBag.Cities" data-val="@ViewBag.SelectedCity">
+                    <option value="">-- Виберіть місто --</option>
+                </select>
+                
             </div>
 
-            <div class="div-search-all-items div-seacrh-district">
+            <div class="div-search-all-items div-seacrh-district" id="districtContainer" style="display: none;">
                 <label for="District">Район</label>
                 <select id="districtDropdown" asp-for="DistrictId">
-                    @foreach (var district in ViewBag.Districts)
-                    {
-                        <option value="@district.Value">@district.Text</option>
-                    }
+                    <option value="">-- Спочатку виберіть місто --</option>
                 </select>
             </div>
 
             <div class="div-search-all-items div-seacrh-city">
-                <label for="Rooms">Кількість кімнат</label>
-                <select asp-for="Rooms">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4+</option>
-                </select>
+                <label>Кількість кімнат</label>
+                <div>
+                    <label>
+                        <input class="none-input" type="checkbox" name="Rooms" value="1" />
+                        <span class="custom-checkbox"></span>
+                    </label>
+                    <span>1</span>
+                    
+                    <label>
+                        <input class="none-input" type="checkbox" name="Rooms" value="2" />
+                        <span class="custom-checkbox"></span>
+                    </label>
+                    <span>2</span>
+                    
+                    <label>
+                        <input class="none-input" type="checkbox" name="Rooms" value="3" />
+                        <span class="custom-checkbox"></span>
+                    </label>
+                    <span>3</span>
+                    
+                    <label>
+                        <input class="none-input" type="checkbox" name="Rooms" value="4" />
+                        <span class="custom-checkbox"></span>
+                    </label>
+                    <span>4+</span>
+                    
+                </div>
             </div>
 
             <div class="div-search-all-items div-seacrh-city">
@@ -130,32 +150,45 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            var selectedCityId = $('#cityDropdown').data('val'); // Получаем Id города по умолчанию
-
-            // Сразу загружаем районы для города по умолчанию
-            if (selectedCityId) {
-                loadDistricts(selectedCityId);
-            }
-
             $('#cityDropdown').change(function () {
                 var cityId = $(this).val();
-                loadDistricts(cityId);
+                if (cityId) {
+                    loadDistricts(cityId);
+                } else {
+                    clearDistricts(); // Сбрасываем районы, если город не выбран
+                }
             });
 
             function loadDistricts(cityId) {
+                clearDistricts();
                 $.getJSON('@Url.Action("GetDistrictsByCityId", "Object")', { cityId: cityId }, function (districts) {
                     var districtDropdown = $('#districtDropdown');
-                    districtDropdown.empty(); // Очищаем текущие опции
+                    districtDropdown.empty();
+                    districtDropdown.append($('<option>', { value: '', text: '-- Виберіть район --' }));
 
-                    $.each(districts, function (index, district) {
-                        districtDropdown.append($('<option>', {
-                            value: district.id,
-                            text: district.name
-                        }));
-                    });
+                    if (districts.length === 0) {
+                        districtDropdown.append($('<option>', { value: '', text: '-- Районів немає --' }));
+                    } else {
+                        $.each(districts, function (index, district) {
+                            districtDropdown.append($('<option>', { value: district.id, text: district.name }));
+                        });
+                    }
+
+                    // Показываем контейнер для районов только если есть районы
+                    if (districts.length > 0) {
+                        $('#districtContainer').show(); // Показываем контейнер с меткой и дропдауном
+                    }
                 });
             }
+
+            function clearDistricts() {
+                var districtDropdown = $('#districtDropdown');
+                districtDropdown.empty(); // Очищаем выпадающий список районов
+                districtDropdown.append($('<option>', { value: '', text: '-- Спочатку виберіть місто --' }));
+                districtDropdown.val(''); // Сбрасываем выбранное значение
+                $('#districtContainer').hide(); // Скрываем контейнер для районов
+            }
         });
+
     </script>
 }
-
